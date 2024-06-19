@@ -1,6 +1,7 @@
 import React from "react";
 
-function MovieCard() {
+function MovieCard(props) {
+  const { data } = props;
   return (
     <>
       <div>MovieCard</div>
