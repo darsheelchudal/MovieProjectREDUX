@@ -6,6 +6,7 @@ import "./MovieListing.scss";
 
 function MovieListing() {
   const movies = useSelector(getAllMovies);
+
   let renderMovies = "";
 
   if (movies.Response === "True") {
