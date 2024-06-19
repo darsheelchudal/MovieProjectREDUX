@@ -52,10 +52,8 @@ const movieSlice = createSlice({
   name: "movies",
   initialState,
   reducers: {
-    addMovies: (state, { payload }) => {
-      state.movies = payload;
-      //   {...state,payload} no need to do this in redux toolkit unlike traditional redux
-      //Redux toolkit automatically creates the copy pf the object
+    removeSelectedMovieOrShow: (state) => {
+      state.selectMoviesOrShow = {};
     },
   },
   extraReducers: (builder) => {
@@ -89,7 +87,7 @@ const movieSlice = createSlice({
   },
 });
 
-export const { addMovies } = movieSlice.actions;
+export const { removeSelectedMovieOrShow } = movieSlice.actions;
 export const getAllMovies = (state) => state.movies.movies;
 export const getAllShows = (state) => state.movies.shows;
 export const getSelectedMovieOrShow = (state) =>
