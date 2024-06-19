@@ -20,9 +20,6 @@ function MovieListing() {
     );
   }
 
-  console.log("Render movies", renderMovies);
-  console.log(movies);
-
   return (
     <div className="movie-wrapper">
       <div className="movie-list">
