@@ -16,8 +16,22 @@ export const fetchAsyncMovies = createAsyncThunk(
   }
 );
 
+export const fetchAsyncShows = createAsyncThunk(
+  "movies/fetchAsyncShows",
+  async () => {
+    const seriesText = "Friends";
+    const response = await movieApi
+      .get(`?apiKey=${ApiKey}&s=${seriesText}&type=series`)
+      .catch((err) => {
+        console.log("Error", err.message);
+      });
+    return response.data;
+  }
+);
+
 const initialState = {
   movies: {},
+  shows: {},
 };
 
 const movieSlice = createSlice({
@@ -36,15 +50,20 @@ const movieSlice = createSlice({
         console.log("Pending");
       })
       .addCase(fetchAsyncMovies.fulfilled, (state, { payload }) => {
-        console.log("Successful");
+        console.log("Fetched successfully");
         state.movies = payload;
       })
       .addCase(fetchAsyncMovies.rejected, (state, { error }) => {
         console.log("Rejected");
+      })
+      .addCase(fetchAsyncShows.fulfilled, (state, { payload }) => {
+        console.log("Fetched successfully");
+        state.shows = payload;
       });
   },
 });
 
 export const { addMovies } = movieSlice.actions;
 export const getAllMovies = (state) => state.movies.movies;
+export const getAllShows = (state) => state.movies.shows;
 export default movieSlice.reducer;
