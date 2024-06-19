@@ -24,7 +24,6 @@ function Header() {
     dispatch(fetchAsyncShows(term));
     setTerm("");
   };
-
   return (
     <>
       <div className="header">
