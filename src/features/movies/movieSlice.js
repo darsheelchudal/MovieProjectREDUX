@@ -50,14 +50,21 @@ const movieSlice = createSlice({
         console.log("Pending");
       })
       .addCase(fetchAsyncMovies.fulfilled, (state, { payload }) => {
-        console.log("Fetched successfully");
+        console.log("Movies Fetched successfully");
         state.movies = payload;
       })
       .addCase(fetchAsyncMovies.rejected, (state, { error }) => {
-        console.log("Rejected");
+        console.log("Movies fetch Rejected");
+      })
+      .addCase(fetchAsyncShows.pending, (state) => {
+        console.log("Pending");
       })
       .addCase(fetchAsyncShows.fulfilled, (state, { payload }) => {
-        console.log("Fetched successfully");
+        console.log("Shows Fetched successfully");
+        state.shows = payload;
+      })
+      .addCase(fetchAsyncShows.rejected, (state, { payload }) => {
+        console.log("Shows Fetched Rejected");
         state.shows = payload;
       });
   },
