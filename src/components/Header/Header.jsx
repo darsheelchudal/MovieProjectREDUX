@@ -2,14 +2,39 @@ import React from "react";
 import { Link } from "react-router-dom";
 import user from "../../images/user.png";
 import "./Header.scss";
+import { CiSearch } from "react-icons/ci";
+import { useState } from "react";
 
 function Header() {
+  const [term, setTerm] = useState("");
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    console.log(term);
+  };
   return (
     <>
       <div className="header">
-        <Link to="/">
-          <div className="logo">MovieApp</div>
-        </Link>
+        <div className="logo">
+          {" "}
+          <Link to="/">MovieApp </Link>
+        </div>
+        <div className="search-bar">
+          <form onSubmit={submitHandler}>
+            <input
+              type="text"
+              name=""
+              id=""
+              value={term}
+              placeholder="Search Movies Or Change"
+              onChange={(e) => setTerm(e.target.value)}
+            />
+
+            <button type="submit">
+              <CiSearch />
+            </button>
+          </form>
+        </div>
         <div className="user-image">
           <img src={user} alt="user" />
         </div>
